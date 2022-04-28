@@ -10,6 +10,8 @@ class ContentObserverWorker(private val context: Context, private val params: Wo
     override fun doWork(): Result {
         JobHelper.scheduleContentObserverWorker(context)
 
+        Log.i("ContentURI", "doWork()")
+
         var result : Result = Result.success()
 
         try {
@@ -20,7 +22,7 @@ class ContentObserverWorker(private val context: Context, private val params: Wo
                 }
             }
         } catch (e : Throwable) {
-            Log.e("Exception", "Exception: $e")
+            Log.e("ContentURI", "Exception: $e")
             result = Result.retry()
         }
 
